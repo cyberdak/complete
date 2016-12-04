@@ -1,0 +1,15 @@
+scf_complete()
+{
+local cur prev
+COMPREPLY=()
+cur="${COMP_WORDS[COMP_CWORD]}"
+prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+case "${prev}" in 
+    start|restart|shutdown|jstat|jstack)
+        COMPREPLY=( $(compgen -o filenames -W "`ls /opt/scf/service/deploy`" -- ${cur}) )
+    ;;
+esac
+}
+complete -F scf_complete scf
+complete -F scf_complete /opt/scf/bin/scf
