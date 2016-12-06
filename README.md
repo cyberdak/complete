@@ -16,6 +16,9 @@ source 只针对本次 session，永久的方法，可以将以上语句写入�
 
 ```
 curl -sLk --connect-timeout 60 "https://raw.githubusercontent.com/cyberdak/complete/master/scf_complete" -o /etc/bash_completion.d/scf_complete
+source /etc/bash_completion.d/scf_complete
+complete -F scf_complete scf
+complete -F scf_complete /opt/scf/bin/scf
 echo "source /etc/bash_completion.d/scf_complete" >> ~/.bashrc
 echo "complete -F scf_complete scf" >> ~/.bashrc
 echo "complete -F scf_complete /opt/scf/bin/scf" >> ~/.bashrc
